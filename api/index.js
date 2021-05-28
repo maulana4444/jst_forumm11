@@ -34,14 +34,15 @@ bot.onText(/\/predict/, (msg) => {
     bot.sendMessage(
         msg.chat.id,
         `Input Value i|v example 9|9`
-    );   
+    );
+    state = 1;
 });
-state = 1;
+
 
 bot.on('message', (msg) => {
 console.log(msg);
 if(state ==1){
-    console.log(msg.text);
+    console.log(msg.Text);
     s = msg.text.split ("|");
     i = s[0]
     v = s[1]
@@ -51,7 +52,6 @@ if(state ==1){
             parsefloat(s[1])
         ]
     ).then((jres)=>{
-        console.log(jres);
         bot.sendMessage(
             msg.chat.id,
             'Predict value v is ${jres[0]} volt'
@@ -61,6 +61,7 @@ if(state ==1){
             'Predict value p is ${jres[1]} watt'
                 ); 
     })
+    state = 0 
 }else{
     state=0
 }
