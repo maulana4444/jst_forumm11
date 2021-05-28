@@ -54,11 +54,11 @@ if(state ==1){
         console.log(jres);
         bot.sendMessage(
             msg.chat.id,
-            'Predict value v is s{jres[0]} volt'
+            'Predict value v is ${jres[0]} volt'
             );
         bot.sendMessage(
             msg.chat.id,
-            'Predict value p is s{jres[1]} watt'
+            'Predict value p is ${jres[1]} watt'
                 ); 
     })
 }else{
