@@ -1,4 +1,4 @@
-var express = require('express');
+ivar express = require('express');
 var r = express.Router();
 
 // load pre-trained model
@@ -16,7 +16,7 @@ bot.onText(/\/start/, (msg) => {
     bot.sendMessage(
         msg.chat.id,
         `hello ${msg.chat.first_name}, welcome...\n
-        click /menu to main menu`
+        click /predict`
     );   
 });
 
