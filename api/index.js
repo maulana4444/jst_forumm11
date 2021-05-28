@@ -30,6 +30,14 @@ bot.onText(/\/predict/, (msg) => {
     state = 1
 });
 
+//bot.on('message', (msg) => {
+//	if(state == 1){
+//		console.log(msg.Text);		
+//  	}else {
+//        	state = 0 
+//        }
+//})
+
 
 bot.on('message', (msg) => {
 	if(state == 1){
