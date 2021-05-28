@@ -28,6 +28,17 @@ bot.onText(/\/menu/, (msg) => {
     );   
 });
 
+bot.onText(/\/predict/, (msg) => { 
+    console.log(msg)
+    bot.sendMessage(
+        msg.chat.id,
+        `Input Value i|v example 9|9`
+    );   
+});
+
+bot.on ('message',(msg) => {
+    console.log(msg);
+})
 // routers
 r.get('/prediction/:i/:r', function(req, res, next) {    
     model.predict(
