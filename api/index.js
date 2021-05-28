@@ -10,7 +10,7 @@ const token = '1566520999:AAG5DMEg1XgTEDULZBFxO41hcCWGL6MIb_0'
 const bot = new TelegramBot(token, {polling: true});
 
 
-// bots
+// Main Menu Bot
 bot.onText(/\/start/, (msg) => { 
     console.log(msg)
     bot.sendMessage(
@@ -20,44 +20,49 @@ bot.onText(/\/start/, (msg) => {
     );   
 });
 
-
-
 state = 0;
 bot.onText(/\/predict/, (msg) => { 
     console.log(msg)
     bot.sendMessage(
         msg.chat.id,
-        `Input Value i|v example 9|9`
-    );
-    state = 1;
+        `masukkan nilai i|v contoh 9|9`
+    );   
+    state = 1
 });
 
+//bot.on('message', (msg) => {
+//	if(state == 1){
+//		console.log(msg.Text);		
+//  	}else {
+//        	state = 0 
+//        }
+//})
 
 bot.on('message', (msg) => {
-    if(state ==1){
-        console.log(msg.Text);
-        s = msg.text.split ("|");
-        i = s[0]
-        v = s[1]
-        model.predict(
-            [
-                parseFloat(s[0]),
-                parseFloat(s[1])
-            ]
-        ).then((jres)=>{
-            bot.sendMessage(
+	if(state == 1){
+		console.log(msg.Text);
+		s = msg.text.split("|");
+		i = s[0]
+		v = s[1]
+		model.predict(
+			[
+				parseFloat(s[0]),
+				parseFloat(s[1])
+			]
+		).then((jres)=>{
+			bot.sendMessage(
+				msg.chat.id,
+				`nilai v yang diprediksi adalah ${jres[0]} volt`
+        );
+        bot.sendMessage(
                 msg.chat.id,
-                'Predict value v is ${jres[0]} volt'
-            );
-            bot.sendMessage(
-                msg.chat.id,
-                'Predict value p is ${jres[1]} watt'
-            ); 
-        })
+                `nilai p yang diprediksi adalah ${jres[1]} watt`
+        );
+    })
+		state = 0
+    }else {
         state = 0 
-    }else{
-        state=0
-    }
+        }
 })
 
 // routers
