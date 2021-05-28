@@ -53,11 +53,11 @@ bot.on('message', (msg) => {
 		).then((jres)=>{
 			bot.sendMessage(
 				msg.chat.id,
-				`Prediction value v is ${jres[0]} volt`
+				`prediction value v is ${jres[0]} volt`
         );
         bot.sendMessage(
                 msg.chat.id,
-                `Prediction value p is ${jres[1]} watt`
+                `prediction value p is ${jres[1]} watt`
         );
     })
 		state = 0
