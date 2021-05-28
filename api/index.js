@@ -20,13 +20,7 @@ bot.onText(/\/start/, (msg) => {
     );   
 });
 
-bot.onText(/\/menu/, (msg) => { 
-    console.log(msg)
-    bot.sendMessage(
-        msg.chat.id,
-        `this is your main menu`
-    );   
-});
+
 
 state = 0;
 bot.onText(/\/predict/, (msg) => { 
@@ -48,8 +42,8 @@ if(state ==1){
     v = s[1]
     model.predict(
         [
-            parsefloat(s[0]),
-            parsefloat(s[1])
+            parseFloat(s[0]),
+            parseFloat(s[1])
         ]
     ).then((jres)=>{
         bot.sendMessage(
